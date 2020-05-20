@@ -8,7 +8,7 @@
     </div>
     <div class="button-row pt-2 mb-3 text-center">
         <!-- <div class="col text-center"> -->            
-            <button *ngIf="paused == 0" mat-raised-button color="primary" (click)="startTimer();">START</button>
+            <button *ngIf="paused == 0" mat-raised-button color="primary" (click)="startTimer();">{{start_text}}</button>
             <button *ngIf="paused == -1" mat-raised-button color="primary" (click)="startTimer();">RESUME</button>
             <button *ngIf="paused > 0" mat-raised-button color="accent" (click)="pauseTimer();">PAUSE</button>
             <button *ngIf="state" mat-raised-button (click)="lapTimer();">LAP</button>
@@ -55,7 +55,7 @@
                     
                     <div *ngIf="!reset">
                         <strong>{{activity.name}}</strong>&nbsp; - &nbsp;{{activity.hours}} : {{activity.minutes}} : {{activity.seconds}}
-                        <button *ngIf="!activity.getState() && reset_text == 'STOP'" type="button" class="close" (click)="activity.timerToggle();" id="tp_{{i}}">
+                        <button *ngIf="!activity.getState() && reset_text == 'STOP'" type="button" class="close" (click)="startSubTimer(i);" id="tp_{{i}}">
                             <span aria-hidden="true">&#9658;</span>
                         </button>
                         <button *ngIf="activity.getState() && reset_text == 'STOP'" type="button" class="close" (click)="activity.timerToggle();" id="ts_{{i}}">
